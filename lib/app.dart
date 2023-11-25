@@ -1,4 +1,5 @@
 import 'package:carrinho/catalog_view_model.dart';
+import 'package:carrinho/detail_page.dart';
 import 'package:carrinho/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +23,9 @@ class Aplicacao extends StatelessWidget {
         initialRoute: "/",
         routes: {
           "/": (context) => const HomePage(),
+          "/detail":(context) =>  const DetailPage(),
         },
+        debugShowCheckedModeBanner: false,
       ),
     );
   }

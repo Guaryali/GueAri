@@ -3,7 +3,6 @@ import 'package:carrinho/catalog_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -15,11 +14,21 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Home"),
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.shopping_cart))
+        ],
       ),
       body: ListView.separated(
         itemCount: products.length,
-        itemBuilder: (context, index) => CatalogItemWidget(
-          product: products[index],
+        itemBuilder: (context, index) => GestureDetector(
+          onTap: () => Navigator.pushNamed(
+            context,
+            "/detail",
+            arguments: products[index].id,
+          ),
+          child: CatalogItemWidget(
+            product: products[index],
+          ),
         ),
         separatorBuilder: (context, index) => const Divider(),
       ),
